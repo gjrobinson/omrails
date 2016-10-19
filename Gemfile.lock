@@ -162,6 +162,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap (~> 4.0.0.alpha4)
+  bundler (~> 1.13, >= 1.13.5)
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
