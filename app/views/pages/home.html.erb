@@ -1,26 +1,39 @@
-<div class="jumbotron jumbotron-home">
+<% if user_signed_in? %>
+  <div class="jumbotron jumbotron-home">
     <div class="container">
-        <h1>Welcome to my website!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <%= link_to "Learn more »", "#", class: "btn btn-primary btn-lg" %> 
+      <h1>Welcome Back!</h1>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
-        </div>
+  </div>
+<% else %>
+  <div class="jumbotron jumbotron-home">
+    <div class="container">
+      <h1>Welcome to my website!</h1>
+          <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+          <%= link_to "Learn more »", "#", class: "btn btn-primary btn-lg" %> 
     </div>
-</div>
+  </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h2>Manage Your CV</h2>
+            <p>Build, manage, maintain and share your CV</p>
+            <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+        </div>
+            <div class="col-md-3">
+              <h2>Huge Discounts</h2>
+                  <p>AMPA members enjoy group discounts on medical malpractice insurance, disability insurance, and workers compensation insurance. Our members have saved millions in premiums through these programs.</p>
+                  <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+            </div>
+              <div class="col-md-3">
+                <h2>Credentialing Management</h2>
+                  <p>Our HIPAA compliant secure platform gives medical professionals a safe place to manage their important credentialing documents and share them with facilities and vendors that require updated credentialing documents</p>
+                  <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+              </div>
+                <div class="col-md-3">
+                  <h2>Network</h2>
+                    <p>Find your colleagues, use our search tool to invite your colleagues and friends. Form groups within our secure platform and create private or public forums to discuss the issues you care most about. Post a job, look for a job, or share content you feel is important.</p>
+                    <p><%= link_to "View details", "#", class: "btn btn-secondary" %></p>
+                </div>   
+      </div>
+    </div>
+<% end %>
