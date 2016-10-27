@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'bundler', '~> 1.13', '>= 1.13.5'
 gem 'devise', '~> 4.2'
+gem 'activeadmin', '~> 1.0.0.pre4' 
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 group :development, :test do
   gem 'byebug', platform: :mri
