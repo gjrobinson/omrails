@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filename:</strong>
+  <%= @credentialing_document.filename %>
+</p>
+
+<p>
+  <strong>Content type:</strong>
+  <%= @credentialing_document.content_type %>
+</p>
+
+<p>
+  <strong>File contents:</strong>
+  <%= @credentialing_document.file_contents %>
+</p>
+
+<%= link_to 'Edit', edit_credentialing_document_path(@credentialing_document) %> |
+<%= link_to 'Back', credentialing_documents_path %>

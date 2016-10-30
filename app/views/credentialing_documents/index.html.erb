@@ -1,0 +1,35 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Credentialing Documents</h1>
+
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Document Title</th>
+        <th>Document Details</th>
+        <th>File contents</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @credentialing_documents.each do |credentialing_document| %>
+        <% if @credentialing_document.user == current_user %>
+          <tr>
+            <td><%= credentialing_document.filename %></td>
+            <td><%= credentialing_document.content_type %></td>
+            <td><%= credentialing_document.file_contents %></td>
+            <td><%= link_to 'Show', credentialing_document %></td>
+            <td><%= link_to 'Edit', edit_credentialing_document_path(credentialing_document) %></td>
+            <td><%= link_to 'Destroy', credentialing_document, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Credentialing Document', new_credentialing_document_path %>
+</div>
