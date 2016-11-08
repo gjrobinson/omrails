@@ -4,5 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :trackable, :validatable
 
-  has_many :tweets       
+  has_many :tweets   
+  has_many :items
+  has_many :credentialing_documents  
+  validates :username, presence: true, uniqueness: true, length: { minimum: 6 } 
+  validates :name, presence: true
 end

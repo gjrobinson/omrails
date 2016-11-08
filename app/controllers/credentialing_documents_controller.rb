@@ -1,69 +1,55 @@
 class CredentialingDocumentsController < ApplicationController
-  before_action :set_credentialing_document, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /credentialing_documents
-  # GET /credentialing_documents.json
   def index
     @credentialing_documents = CredentialingDocument.all
   end
 
   # GET /credentialing_documents/1
-  # GET /credentialing_documents/1.json
   def show
-    send_data(@document.file_contents,
-            type: @document.content_type,
-            filename: @document.filename)
+    @credentialing_document = CredentialingDocument.find(params[:id])
   end
 
   # GET /credentialing_documents/new
   def new
-    @credentialing_document = CredentialingDocument.new
+    @credentialing_document = current_user.credentialing_documents.new
   end
 
   # GET /credentialing_documents/1/edit
   def edit
+    @credentialing_document = current_user.credentialing_documents.find(params[:id])
   end
 
   # POST /credentialing_documents
-  # POST /credentialing_documents.json
   def create
-    @credentialing_document = CredentialingDocument.new(credentialing_document_params)
+    @credentialing_document = current_user.credentialing_documents.new(item_params)
 
-    respond_to do |format|
-      if @credentialing_document.save
-        format.html { redirect_to @credentialing_document, notice: 'Credentialing document was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @credentialing_document.save
+        redirect_to @credentialing_document, notice: 'Credentialing document was successfully created.' 
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /credentialing_documents/1
-  # PATCH/PUT /credentialing_documents/1.json
   def update
-    respond_to do |format|
-      if @credentialing_document.update(credentialing_document_params)
-        format.html { redirect_to @credentialing_document, notice: 'Credentialing document was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    @credentialing_document = current_user.credentialing_documents.find(params[:id])
+    if @credentialing_document.update(credentialing_document_params)
+      redirect_to @credentialing_document, notice: 'Credentialing document was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
   # DELETE /credentialing_documents/1
-  # DELETE /credentialing_documents/1.json
   def destroy
+    @credentialing_document = current_user.credentialing_documents.find(prarams[:id])
     @credentialing_document.destroy
-    respond_to do |format|
-      format.html { redirect_to credentialing_documents_url, notice: 'Credentialing document was successfully destroyed.' }
+    redirect_to credentialing_documents_url, notice: 'Credentialing document was successfully destroyed.' 
     end
-  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_credentialing_document
-      @credentialing_document = CredentialingDocument.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def credentialing_document_params
